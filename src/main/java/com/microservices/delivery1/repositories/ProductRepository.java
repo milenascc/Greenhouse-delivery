@@ -1,11 +1,11 @@
 package com.microservices.delivery1.repositories;
 
 import com.microservices.delivery1.entites.Product;
-import org.springframework.data.repository.CrudRepository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 
-import javax.transaction.Transactional;
-
-@Transactional
-public interface ProductRepository extends CrudRepository<Product, Long> {
+@RepositoryRestResource(collectionResourceRel = "products", path = "products")
+public interface ProductRepository extends JpaRepository<Product, Long> {
 }
