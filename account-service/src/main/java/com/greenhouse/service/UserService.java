@@ -1,9 +1,9 @@
-package main.java.com.greenhouse.service;
+package com.greenhouse.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.codebyamir.model.User;
-import com.codebyamir.repository.UserRepository;
+import com.greenhouse.model.User;
+import com.greenhouse.repository.UserRepository;
 
 @Service("userService")
 public class UserService {

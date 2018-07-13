@@ -1,8 +1,12 @@
-package main.java.com.greenhouse.repository;
-import org.springframework.data.jpa.repository.CrudRepository;
+package com.greenhouse.repository;
+
+import com.greenhouse.model.User;
+import com.greenhouse.repository.UserRepository;
+
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.greenhouse.*;
+
 
 @Repository("userRepository")
 public interface UserRepository extends CrudRepository<User, Long> {

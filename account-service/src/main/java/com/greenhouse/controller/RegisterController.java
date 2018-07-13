@@ -1,4 +1,4 @@
-package main.java.com.greenhouse.controller;
+package com.greenhouse.controller;
 import java.util.Map;
 import java.util.UUID;
 
@@ -16,7 +16,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.greenhouse.*;
+import com.greenhouse.service.EmailService;
+import com.greenhouse.service.UserService;
+import com.greenhouse.model.User;
+
 import com.nulabinc.zxcvbn.Strength;
 import com.nulabinc.zxcvbn.Zxcvbn;
 
@@ -112,7 +115,7 @@ public class RegisterController {
 		
 		Zxcvbn passwordCheck = new Zxcvbn();
 		
-		Strength strength = passwordCheck.measure(requestParams.get("password"));
+		Strength strength = passwordCheck.measure(requestParams.get("password").toString());
 		
 		if (strength.getScore() < 3) {
 			bindingResult.reject("password");
@@ -125,10 +128,10 @@ public class RegisterController {
 		}
 	
 		// Find the user associated with the reset token
-		User user = userService.findByConfirmationToken(requestParams.get("token"));
+		User user = userService.findByConfirmationToken((String) requestParams.get("token"));
 
 		// Set new password
-		user.setPassword(bCryptPasswordEncoder.encode(requestParams.get("password")));
+		user.setPassword(bCryptPasswordEncoder.encode(requestParams.get("password").toString()));
 
 		// Set user to enabled
 		user.setEnabled(true);
