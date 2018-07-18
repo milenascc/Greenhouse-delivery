@@ -1,9 +1,0 @@
-demo\service\impl\OrderServiceImpl.class
-demo\model\ItemQuantity.class
-demo\service\OrderService.class
-demo\model\AddressInfo.class
-demo\repository\OrderRepository.class
-demo\model\Order.class
-demo\OrderingServiceApp.class
-demo\model\UserInfo.class
-demo\rest\OrderRestApi.class
