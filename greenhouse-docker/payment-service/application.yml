@@ -1,0 +1,16 @@
+server:
+  port: 8004
+spring:
+  application:
+    name: payment-service
+  cloud:
+    stream:
+      bindings:
+        input: payments
+  data:
+    mongodb:
+      host: 10.100.3.49
+  rabbitmq:
+    host: 10.108.163.13
+
+

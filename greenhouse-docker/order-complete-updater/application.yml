@@ -1,0 +1,12 @@
+server:
+  port: 8005
+spring:
+  application:
+    name: order-complete-updater
+  data:
+    mongodb:
+      host: 10.100.3.49
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://10.103.227.10:80

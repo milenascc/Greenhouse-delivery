@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: order-updater-service
+  name: order-updater-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: order-updater-service
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: order-updater-service
+    spec:
+      containers:
+      - image: order-complete-updater:0.1
+        name: order-updater
+        ports:
+        - containerPort: 8005
+        resources: {}
+        imagePullPolicy: Never
+      restartPolicy: Always
+status: {}

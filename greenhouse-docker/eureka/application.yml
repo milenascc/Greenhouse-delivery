@@ -1,0 +1,10 @@
+server:
+  host: 10.108.40.41
+  port: 80
+
+eureka:
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+  server:
+    waitTimeInMsWhenSyncEmpty: 0    

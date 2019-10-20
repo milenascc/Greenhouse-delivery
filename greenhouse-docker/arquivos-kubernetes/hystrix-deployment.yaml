@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hystrix-deployment
+  labels:
+    app: hystrix
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hystrix
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: hystrix
+    spec:
+      containers:
+      - image: hystrix:0.1
+        name: hystrix
+        ports:
+        - containerPort: 7979
+        resources: {}
+        imagePullPolicy: Never
+status: {}

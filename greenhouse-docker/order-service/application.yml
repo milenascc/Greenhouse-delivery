@@ -1,0 +1,8 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: ordering-service
+  data:
+    mongodb:
+      host: 10.100.3.49  
