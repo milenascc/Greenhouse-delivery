@@ -3,23 +3,23 @@ kind: Deployment
 metadata:
   creationTimestamp: null
   labels:
-    app: order-updater-service
-  name: order-updater-service
+    app: order-complete-updater
+  name: order-complete-updater
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: order-updater-service
+      app: order-complete-updater
   strategy: {}
   template:
     metadata:
       creationTimestamp: null
       labels:
-        app: order-updater-service
+        app: order-complete-updater
     spec:
       containers:
       - image: order-complete-updater:0.1
-        name: order-updater
+        name: order-complete-updater
         ports:
         - containerPort: 8005
         resources: {}
