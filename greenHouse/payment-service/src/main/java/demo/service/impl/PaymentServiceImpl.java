@@ -22,8 +22,8 @@ public class PaymentServiceImpl implements PaymentService {
     private PaymentRepository paymentRepository;
 
     @Autowired
-    public PaymentServiceImpl(RestTemplate restTemplate, OrderRepository orderRepository, PaymentRepository paymentRepository) {
-        this.restTemplate = restTemplate;
+    public PaymentServiceImpl(OrderRepository orderRepository, PaymentRepository paymentRepository) {
+        this.restTemplate = new RestTemplate();
         this.orderRepository = orderRepository;
         this.paymentRepository = paymentRepository;
     }
