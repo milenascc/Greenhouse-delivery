@@ -1,21 +1,23 @@
 version: '3'
 services:
-  
+
   rabbitmq:
     container_name: rabbitmq
     image: rabbitmq:3-management
-    network_mode: host
     restart: on-failure
     ports:
       - "5672:5672"
       - "15672:15672"
+    networks:
+      - net
   mongodb:
     container_name: mongodb
     image: mongo
-    network_mode: host
     restart: on-failure
     ports:
       - "27017:27017"
+    networks:
+      - net
   hystrix:
     container_name: hystrix
     build: "./hystrix"
@@ -28,39 +30,46 @@ services:
     container_name: restaurant
     build: "./restaurant-service"
     image: restaurant-service:0.1
-    network_mode: "host"
     restart: on-failure
     ports:
       - "8001:8001"
+    networks:
+      - net
   order-service:
     container_name: order
     build: "./order-service"
     image: order-service:0.1
-    network_mode: "host"
     restart: on-failure
     ports:
       - "8002:8002"
+    networks:
+      - net
   payment-distribution-service:
     container_name: payment-distribution
     build: "./payment-distribution"
     image: payment-distribution:0.1
-    network_mode: "host"
     restart: on-failure
     ports:
       - "8003:8003"
+    networks:
+      - net
   payment-service:
     container_name: payment
     build: "./payment-service"
     image: payment-service:0.1
-    network_mode: "host"
     restart: on-failure
     ports:
       - "8004:8004"
+    networks:
+      - net
   order-updater-service:
     container_name: order-updater
     build: "./order-complete-updater"
     image: order-complete-updater:0.1
-    network_mode: "host"
     restart: on-failure
     ports:
       - "8005:8005"
+    networks:
+      - net
+networks:
+  net:

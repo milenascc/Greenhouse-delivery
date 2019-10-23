@@ -7,3 +7,8 @@ spring:
     stream:
       bindings:
         input: payments
+  data:
+    mongodb:
+      host: mongodb
+  rabbitmq:
+    host: rabbitmq

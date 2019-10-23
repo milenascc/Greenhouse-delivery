@@ -12,7 +12,6 @@
     <artifactId>platform</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>eureka</module>
         <module>hystrix-dashboard</module>
     </modules>
 
