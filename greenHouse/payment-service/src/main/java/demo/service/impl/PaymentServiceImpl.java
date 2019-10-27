@@ -31,7 +31,6 @@ public class PaymentServiceImpl implements PaymentService {
     @HystrixCommand(fallbackMethod = "processPaymentFallback")
     @Override
     public void processPayment(Payment payment) {
-        System.out.println("ProcessPayment called()");
         payment = paymentRepository.save(payment);
         String orderCompleteUpdater = "http://order-updater-service";
         String orderId = payment.getOrderId();
@@ -76,7 +75,7 @@ public class PaymentServiceImpl implements PaymentService {
 
     private void sendErrorMessage(String errorMessage) {
         log.warn(errorMessage);
-        String orderCompleteUpdater = "http://order-updater-service";
+        String orderCompleteUpdater = "http://order-complete-updater";
         restTemplate.postForLocation(orderCompleteUpdater + "/api/errors", errorMessage);
     }
 }
