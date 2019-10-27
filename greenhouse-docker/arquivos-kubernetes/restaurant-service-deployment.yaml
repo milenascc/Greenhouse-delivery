@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: restaurant-service
+  name: restaurant-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: restaurant-service
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: restaurant-service
+    spec:
+      containers:
+      - image: restaurant-service:0.1
+        name: restaurant
+        ports:
+        - containerPort: 8001
+        resources: {}
+      restartPolicy: Always
+status: {}

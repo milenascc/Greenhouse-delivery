@@ -7,3 +7,5 @@ spring:
     stream:
       bindings:
         output: payments
+  rabbitmq:
+    host: rabbitmq
