@@ -39,7 +39,7 @@ public class AspectPaymentService {
                     o.getTotalPrice() + ", orderId = " + orderId;
 			else if(!validateCreditCardInfo(p.getCreditCardInfo())) errormsg = "Invalid credit card information for orderId: " + orderId;
 		}
-		if(errormsg.equals("")) {
+		if(!errormsg.equals("")) {
 			RestTemplate restTemplate = new RestTemplate();
 			String orderCompleteUpdater = "http://order-complete-updater";
 	        log.warn(errormsg);
