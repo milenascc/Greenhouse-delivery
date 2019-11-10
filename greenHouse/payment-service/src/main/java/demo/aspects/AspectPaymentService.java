@@ -5,6 +5,7 @@ import demo.model.Order;
 import demo.model.Payment;
 import demo.repository.OrderRepository;
 import demo.service.impl.PaymentServiceImpl;
+import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -13,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.client.RestTemplate;
 
 @Aspect
+@Slf4j
 public class AspectPaymentService {
 	@Autowired
 	private OrderRepository orderRepository;
@@ -40,13 +42,14 @@ public class AspectPaymentService {
 		if(errormsg.equals("")) {
 			RestTemplate restTemplate = new RestTemplate();
 			String orderCompleteUpdater = "http://order-complete-updater";
-	        //log.warn(errorMessage);
+	        log.warn(errormsg);
 	        restTemplate.postForLocation(orderCompleteUpdater + "/api/errors", errormsg);
 		}else{
 			try{
 				pjp.proceed(new Object[]{service,p});
+				log.info("Payment succeed for order "+p.getOrderId());
 			}catch(Throwable t){
-				t.printStackTrace();;
+				t.printStackTrace();
 			}
 
 		}
