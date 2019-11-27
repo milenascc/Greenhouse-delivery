@@ -1,20 +1,21 @@
 package demo.service.impl;
 
-import demo.model.CreditCardInfo;
 import demo.model.Order;
 import demo.model.Payment;
 import demo.repository.OrderRepository;
 import demo.repository.PaymentRepository;
 import demo.service.PaymentService;
-import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+
 import java.util.Random;
 
 @Service
+//@Slf4j
 public class PaymentServiceImpl implements PaymentService {
     private RestTemplate restTemplate;
     private OrderRepository orderRepository;
@@ -27,7 +28,7 @@ public class PaymentServiceImpl implements PaymentService {
         this.paymentRepository = paymentRepository;
     }
 
-    @HystrixCommand(fallbackMethod = "processPaymentFallback")
+//    @HystrixCommand(fallbackMethod = "processPaymentFallback")
     @Override
     public void processPayment(Payment payment) {
         payment = paymentRepository.save(payment);
@@ -36,12 +37,11 @@ public class PaymentServiceImpl implements PaymentService {
         long deliveryTime = getDeliveryTime();
         order.setDeliveryTime(deliveryTime);
         orderRepository.save(order);
-        restTemplate.postForLocation("http://order-complete-updater/api/orders", order);
-
+        restTemplate.postForLocation("http://localhost:8005/api/orders", order);
     }
 
     public void processPaymentFallback(Payment payment) {
-        System.out.println("Fallback method is called.");
+        System.out.println("Fallback method is called."+payment.getId());
     }
 
     private long getDeliveryTime() {

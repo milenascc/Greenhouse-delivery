@@ -3,7 +3,7 @@ package demo;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import demo.model.Payment;
 import demo.service.PaymentService;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.cloud.stream.messaging.Sink;
@@ -12,8 +12,8 @@ import org.springframework.integration.annotation.ServiceActivator;
 
 @MessageEndpoint
 @EnableBinding(Sink.class)
-@Slf4j
 public class PaymentSink {
+    private static final Logger log = org.slf4j.LoggerFactory.getLogger(PaymentSink.class);
     @Autowired
     private PaymentService paymentService;
     @Autowired

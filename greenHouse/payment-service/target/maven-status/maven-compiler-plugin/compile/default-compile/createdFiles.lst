@@ -1,4 +1,5 @@
 demo\service\PaymentService.class
+demo\aspects\AspectPaymentService.class
 demo\model\CreditCardInfo.class
 demo\model\ItemQuantity.class
 demo\model\Payment.class

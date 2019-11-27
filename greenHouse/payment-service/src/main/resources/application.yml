@@ -7,9 +7,7 @@ spring:
     stream:
       bindings:
         input: payments
-  data:
-   # mongodb:
-    #  host: mongodb
+  
   rabbitmq:
     host: localhost
     port: 5672

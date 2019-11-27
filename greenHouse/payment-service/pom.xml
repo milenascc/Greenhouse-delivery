@@ -91,14 +91,19 @@
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
-        <dependency>
+         <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjrt</artifactId>
-            <!-- <version>1.8.9</version> -->
         </dependency>
+        <dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-aop</artifactId>
+		    <scope>compile</scope>
+		</dependency>
         <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjweaver</artifactId>
+            <scope>compile</scope>
             <!-- <version>1.8.9</version> -->
         </dependency>
     </dependencies>
