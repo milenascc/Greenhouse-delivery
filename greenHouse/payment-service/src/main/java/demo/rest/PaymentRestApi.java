@@ -2,8 +2,6 @@ package demo.rest;
 
 import demo.model.Payment;
 import demo.service.PaymentService;
-import lombok.extern.slf4j.Slf4j;
-
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

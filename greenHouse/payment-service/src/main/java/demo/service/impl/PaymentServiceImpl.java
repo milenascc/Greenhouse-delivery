@@ -5,12 +5,9 @@ import demo.model.Payment;
 import demo.repository.OrderRepository;
 import demo.repository.PaymentRepository;
 import demo.service.PaymentService;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-
-import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 
 import java.util.Random;
 

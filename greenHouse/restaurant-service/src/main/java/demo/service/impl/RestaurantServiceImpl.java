@@ -3,13 +3,13 @@ package demo.service.impl;
 import demo.model.Restaurant;
 import demo.repository.RestaurantRepository;
 import demo.service.RestaurantService;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-@Slf4j
 public class RestaurantServiceImpl implements RestaurantService {
+    private static final Logger log = org.slf4j.LoggerFactory.getLogger(RestaurantServiceImpl.class);
     private RestaurantRepository restaurantRepository;
 
     @Autowired

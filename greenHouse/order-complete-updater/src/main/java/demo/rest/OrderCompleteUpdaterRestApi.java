@@ -1,7 +1,7 @@
 package demo.rest;
 
 import demo.model.Order;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api")
-@Slf4j
 public class OrderCompleteUpdaterRestApi {
+    private static final Logger log = org.slf4j.LoggerFactory.getLogger(OrderCompleteUpdaterRestApi.class);
     @Autowired
     private SimpMessagingTemplate template;
 
