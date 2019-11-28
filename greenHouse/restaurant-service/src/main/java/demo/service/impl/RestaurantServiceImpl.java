@@ -3,6 +3,9 @@ package demo.service.impl;
 import demo.model.Restaurant;
 import demo.repository.RestaurantRepository;
 import demo.service.RestaurantService;
+
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,4 +30,10 @@ public class RestaurantServiceImpl implements RestaurantService {
         Restaurant restaurant = restaurantRepository.findFirstByName(name);
         return restaurant;
     }
+
+	@Override
+	public List<Restaurant> listAllRestaurants() {
+		List<Restaurant> restaurants = restaurantRepository.findAll();
+		return restaurants;
+	}
 }

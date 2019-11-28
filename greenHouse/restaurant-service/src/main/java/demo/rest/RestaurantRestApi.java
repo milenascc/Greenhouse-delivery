@@ -33,6 +33,11 @@ public class RestaurantRestApi {
         return restaurantService.getRestaurantByName(name);
     }
 
+    @RequestMapping(value = "/restaurants/list", method = RequestMethod.GET)
+    public List<Restaurant> findAllRestaurants() {
+        return restaurantService.listAllRestaurants();
+    }
+    
     @RequestMapping(value = "/restaurants/{rid}/menuItems", method = RequestMethod.GET)
     public List<MenuItem> getMenuItems(@PathVariable String rid) {
         return menuItemService.findAllByRestaurantId(rid);
