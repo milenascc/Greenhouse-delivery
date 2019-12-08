@@ -1,6 +1,9 @@
 package demo.repository;
 
 import demo.model.Order;
+
+import java.util.List;
+
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.Description;
@@ -17,4 +20,7 @@ public interface OrderRepository extends PagingAndSortingRepository<Order, Strin
 
     @RestResource(rel = "create", description = @Description("Create"))
     public Order save(@Param("order") Order order);
+    
+    @RestResource(rel = "find-all", description = @Description("List all orders"))
+    public List<Order> findAll();
 }
