@@ -25,7 +25,7 @@ public class OrderRestApi {
         return orderService.createOrder(order);
     }
     
-    @RequestMapping(value = "/orders", method = RequestMethod.POST)
+    @RequestMapping(value = "/orders", method = RequestMethod.GET)
     @ResponseStatus(value = HttpStatus.OK)
     public List<Order> findAll(){
     	return orderService.findAll();
